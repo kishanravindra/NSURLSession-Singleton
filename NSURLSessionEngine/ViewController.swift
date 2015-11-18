@@ -63,7 +63,7 @@ class ViewController: UIViewController,WebEngineDelegate
         print(weatherHelper.weatherDescp)
         weatherCondition.text =  weatherHelper.weatherDescp
         let temparture = String(EMHelper.sharedInstance.convertToCelsius(weatherHelper.temp))
-        //tempLabel.text = String(format:"Temp: %@°C",temparture)
+        tempLabel.text = String(format:"Temp: %@°C",temparture)
     }
 
 }

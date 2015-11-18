@@ -51,6 +51,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAz-In-ZI8">
+                                <rect key="frame" x="20" y="433" width="335" height="37"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="WPb-rs-Bh1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.3333333432674408" green="0.3803921639919281" blue="0.44705882668495178" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,12 +70,15 @@
                             <constraint firstItem="GMb-4G-GvW" firstAttribute="top" secondItem="cx7-Dj-qE5" secondAttribute="bottom" id="66i-LJ-35m"/>
                             <constraint firstItem="BrB-F7-eho" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="96" id="9HE-OT-ZCX"/>
                             <constraint firstItem="GMb-4G-GvW" firstAttribute="trailing" secondItem="cx7-Dj-qE5" secondAttribute="trailing" id="C4d-da-agS"/>
+                            <constraint firstItem="uAz-In-ZI8" firstAttribute="trailing" secondItem="GMb-4G-GvW" secondAttribute="trailing" id="FZa-6g-6EU"/>
                             <constraint firstItem="GMb-4G-GvW" firstAttribute="centerX" secondItem="BrB-F7-eho" secondAttribute="centerX" id="Gno-RG-uvK"/>
                             <constraint firstItem="cx7-Dj-qE5" firstAttribute="trailing" secondItem="aNn-DL-KIH" secondAttribute="trailing" constant="95" id="HCq-vr-9KR"/>
                             <constraint firstItem="BrB-F7-eho" firstAttribute="top" secondItem="aNn-DL-KIH" secondAttribute="bottom" constant="16" id="Hzm-JR-gjs"/>
                             <constraint firstItem="GMb-4G-GvW" firstAttribute="leading" secondItem="cx7-Dj-qE5" secondAttribute="leading" id="IqR-aw-im4"/>
+                            <constraint firstItem="uAz-In-ZI8" firstAttribute="leading" secondItem="GMb-4G-GvW" secondAttribute="leading" id="LgE-1W-JMm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aNn-DL-KIH" secondAttribute="trailing" constant="99" id="Rp5-pX-N2l"/>
                             <constraint firstItem="cx7-Dj-qE5" firstAttribute="top" secondItem="BrB-F7-eho" secondAttribute="bottom" constant="14" id="U4o-K8-jGl"/>
+                            <constraint firstItem="uAz-In-ZI8" firstAttribute="top" secondItem="GMb-4G-GvW" secondAttribute="bottom" constant="2" id="Ugk-D2-1ug"/>
                             <constraint firstItem="cx7-Dj-qE5" firstAttribute="leading" secondItem="BrB-F7-eho" secondAttribute="leading" constant="-92" id="Vlt-Z0-pKp"/>
                             <constraint firstItem="aNn-DL-KIH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="154" id="sOH-f2-SEQ"/>
                         </constraints>
@@ -74,6 +87,7 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="dateLabel" destination="cx7-Dj-qE5" id="ch2-Hw-y4r"/>
+                        <outlet property="tempLabel" destination="uAz-In-ZI8" id="dY4-0j-qKT"/>
                         <outlet property="weatherCondition" destination="GMb-4G-GvW" id="HMo-1U-ltg"/>
                         <outlet property="weatherImage" destination="aNn-DL-KIH" id="I63-k4-rhE"/>
                     </connections>
