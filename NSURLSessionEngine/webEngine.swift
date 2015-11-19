@@ -45,8 +45,8 @@ class webEngine: NSObject,NSURLSessionDelegate,NSURLSessionDataDelegate,NSURLSes
             delegateQueue:NSOperationQueue.mainQueue())
        let task = session.dataTaskWithRequest(request)
         task.resume()
-
     }
+    
     
    //MARK:- NSURLSession Delegate Method
    func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void)
@@ -60,34 +60,15 @@ class webEngine: NSObject,NSURLSessionDelegate,NSURLSessionDataDelegate,NSURLSes
         print(statusCode)
     }
     
-    //Handling recieved data and converting data into object using JSON serialization
+    //Appending the recieved data
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData)
     {
         m_cReceivedData.appendData(data)
         print(m_cReceivedData)
-        
-        let dataAsString: NSString = NSString(data:m_cReceivedData, encoding: NSUTF8StringEncoding)!
-        print(dataAsString)
-        // Convert the retrieved data in to an object through JSON deserialization
-        let jsonResult: NSDictionary = (try? NSJSONSerialization.JSONObjectWithData(m_cReceivedData, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary!
-        
-        if delegate != nil
-        {
-            if (delegate?.respondsToSelector("connectionManagerDidRecieveResponse:") != nil)
-            {
-                delegate!.connectionManagerDidRecieveResponse(jsonResult)
-            }
-                
-            else
-            {
-                print("Received data nil when converted to NSString")
-                
-            }
-            
-        }
     }
     
     //Handling Error Connection
+    //Handling recieved data and converting data into object using JSON serialization
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?)
     {
         print("Connection failed.\(error?.localizedDescription)")
@@ -99,13 +80,35 @@ class webEngine: NSObject,NSURLSessionDelegate,NSURLSessionDataDelegate,NSURLSes
                 if error == nil
                 {
                     print("No connection failure")
+                    
                 }
                 else
                 {
                     delegate!.connectionManagerDidFailWithError(error!)
+                    return
                 }
             }
         }
+        
+       
+        let dataAsString: NSString = NSString(data:m_cReceivedData, encoding: NSUTF8StringEncoding)!
+            print(dataAsString)
+            // Convert the retrieved data in to an object through JSON deserialization
+            let jsonResult: NSDictionary = (try? NSJSONSerialization.JSONObjectWithData(m_cReceivedData, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary!
+            
+            if delegate != nil
+            {
+                if (delegate?.respondsToSelector("connectionManagerDidRecieveResponse:") != nil)
+                {
+                    delegate!.connectionManagerDidRecieveResponse(jsonResult)
+                }
+                else
+                {
+                    print("Received data nil when converted to NSString")
+                }
+                
+            }
     }
+    
     
 }
